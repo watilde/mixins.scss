@@ -1,0 +1,25 @@
+@import "compass/css3/";
+
+@mixin animation($name, $iteration-count, $timing-function, $duration, $delay) {
+	@each $prefix in -webkit-, -moz-, -ms-, -o-, null {
+		#{$prefix}animation-name: #{$name};
+		#{$prefix}animation-iteration-count: #{$iteration-count};
+		#{$prefix}animation-timing-function: #{$timing-function};
+		#{$prefix}animation-duration: #{$duration};
+		#{$prefix}animation-delay: #{$delay};
+	}
+}
+
+@mixin animation-play-state($status) {
+	@each $prefix in -webkit-, -moz-, -ms-, -o-, null {
+		#{$prefix}animation-play-state: #{$status};
+	}
+}
+
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {@content; }
+	@-moz-keyframes #{$name} {@content; }
+	@-ms-keyframes #{$name} {@content; }
+	@-o-keyframes #{$name} {@content; }
+	@keyframes #{$name} {@content; }
+}
